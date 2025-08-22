@@ -1,0 +1,131 @@
+﻿@* @{
+    ViewData["Title"] = "Number to Words Converter";
+}
+
+<h2>Number to Words Converter</h2>
+
+<input type="text" id="numberInput" placeholder="Enter number" />
+<button onclick="convertNumber()">Convert</button>
+
+<p id="output" style="margin-top:20px; font-weight:bold;"></p>
+
+<script>
+    async function convertNumber() {
+        const input = document.getElementById("numberInput").value;
+        const response = await fetch(`/api/convert?number=${input}`);
+        const data = await response.json();
+
+        if (response.ok) {
+            document.getElementById("output").innerText = data.result;
+        } else {
+            document.getElementById("output").innerText = data.error;
+        }
+    }
+</script> *@
+
+
+
+@* @{
+    ViewData["Title"] = "Number to Words Converter";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow-lg p-4 rounded" style="width: 450px;">
+        <h2 class="text-center text-primary mb-4">Number to Words Converter</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Enter Number:</label>
+            <input type="text" id="numberInput"
+                   placeholder="e.g., 123.45"
+                   class="form-control form-control-lg" />
+        </div>
+
+        <div class="d-grid mb-3">
+            <button class="btn btn-primary btn-lg" onclick="convertNumber()">Convert</button>
+        </div>
+
+        <p id="output" class="alert alert-success mt-2 text-center fw-bold text-uppercase" style="display:none;"></p>
+    </div>
+</div>
+
+<script>
+    async function convertNumber() {
+        const input = document.getElementById("numberInput").value;
+        const response = await fetch(`/api/convert?number=${input}`);
+        const data = await response.json();
+
+        const outputElem = document.getElementById("output");
+
+        if (response.ok) {
+            outputElem.innerText = data.result;
+            outputElem.style.display = "block";
+        } else {
+            outputElem.innerText = data.error;
+            outputElem.style.display = "block";
+        }
+    }
+</script> *@
+
+
+@{
+    ViewData["Title"] = "Number to Words Converter";
+}
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Full viewport height */
+    }
+
+    main {
+        flex: 1; /* Main content fills remaining space */
+    }
+
+    body, .container, .card {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+</style>
+<main class="d-flex justify-content-center align-items-center vh-100"
+     style="background: linear-gradient(135deg, #e0f7fa, #80deea);">
+    <div class="card shadow-lg p-4 rounded" style="width: 450px; background-color: #f8f9fa;">
+        <h2 class="text-center" style="color: #4a148c; margin-bottom: 1.5rem;">Number to Words Converter</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Enter Number:</label>
+            <input type="text" id="numberInput"
+                   placeholder="e.g., 123.45"
+                   class="form-control form-control-lg" />
+        </div>
+
+        <div class="d-grid mb-3">
+            <button class="btn btn-dark btn-lg" onclick="convertNumber()">Convert</button>
+        </div>
+
+        <p id="output" class="alert alert-success mt-2 text-center fw-bold text-uppercase" style="display:none;"></p>
+    </div>
+</main>
+
+<script>
+    async function convertNumber() {
+        const input = document.getElementById("numberInput").value;
+        const response = await fetch(`/api/convert?number=${input}`);
+        const data = await response.json();
+
+        const outputElem = document.getElementById("output");
+
+        if (response.ok) {
+            outputElem.innerText = data.result;
+            outputElem.style.display = "block";
+        } else {
+            outputElem.innerText = data.error;
+            outputElem.style.display = "block";
+        }
+    }
+</script>
