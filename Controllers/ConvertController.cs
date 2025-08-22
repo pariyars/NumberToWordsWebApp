@@ -11,7 +11,8 @@ namespace NumberToWordsWebApp.Controllers
         {
             if (decimal.TryParse(number, out decimal value))
             {
-                string words = value.ToWords(); // Uses NumberToWord extension
+                //string words = value.ToWords(); // Uses NumberToWord extension
+                string words = (value == 0) ? "ZERO" : value.ToWords();
                 if (value < 1 && value > 0)
                 {
                     words = words.Replace("DOLLARS AND ", "");

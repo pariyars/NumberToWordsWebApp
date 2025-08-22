@@ -5,8 +5,24 @@ namespace NumberToWordsWebApp
 {
     public static class NumberToWord
     {
+        public static string ToWordsSafe(this decimal value)
+        {
+            // If input is less than 1 and greater than 0 (like 0.99)
+            if (value < 1 && value > 0)
+            {
+                string input = Math.Round(value, 2).ToString();
+                string decimals = input.Substring(input.IndexOf(".") + 1);
+
+                return (GetWords(decimals) + " Cents").ToUpper();
+            }
+
+            // Otherwise, use your existing ToWords method
+            return value.ToWords();
+        }
         public static string ToWords(this decimal value)
         {
+
+
             
             string decimals = "";
             string input = Math.Round(value, 2).ToString();
@@ -28,7 +44,7 @@ namespace NumberToWordsWebApp
 
         private static string GetWords(string input)
         {
-            string[] separators = { "", " Thousand ", " Million ", " Billion " };
+            string[] separators = { "", " Thousand ", " Million ", " Billion ", " Trillion ", " Quadrillion ", " Quintillion " };
             int i = 0;
             string strWords = "";
 
