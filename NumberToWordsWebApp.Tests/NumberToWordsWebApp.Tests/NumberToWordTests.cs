@@ -6,8 +6,8 @@ namespace NumberToWordsWebApp.Tests
     public class NumberToWordTests
     {
         [Theory]
-        [InlineData(123.45, "ONE HUNDRED TWENTY-THREE DOLLARS AND FORTY-FIVE CENTS")]
-        [InlineData(0.99, "NINETY-NINE CENTS")]
+        [InlineData(123.45, "ONE HUNDRED TWENTY THREE DOLLARS AND FORTY FIVE CENTS")]
+        [InlineData(0.99, "NINETY NINE CENTS")]
         [InlineData(1001, "ONE THOUSAND ONE DOLLARS")]
         [InlineData(0, "ZERO DOLLARS")]
         [InlineData(1000000, "ONE MILLION DOLLARS")]
